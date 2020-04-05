@@ -1,0 +1,11 @@
+Package: com.charliewhile13.ccpatch13
+Architecture: iphoneos-arm
+Pre-Depends: firmware (>= 13.0)
+Name: CommCenterPatch13
+Depends: mobilesubstrate
+Description: Change those bundles
+Maintainer: Charlie While
+Author: Charlie While
+Section: Tweaks
+Version: 1.0-3+debug
+Installed-Size: 104

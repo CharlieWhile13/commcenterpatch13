@@ -1,0 +1,6 @@
+#!/bin/sh
+echo Rebooting CommCenter...
+killall CommCenter
+killall CommCenter Helper
+sleep 30s
+exit 0
