@@ -1,7 +1,137 @@
 #line 1 "Tweak.x"
 #import "writeData.h"
+#import "mobileGesalt.h"
 
-static __attribute__((constructor)) void _logosLocalCtor_2ad1cba6(int __unused argc, char __unused **argv, char __unused **envp) {
+static __attribute__((constructor)) void _logosLocalCtor_0d0aac4d(int __unused argc, char __unused **argv, char __unused **envp) {
+
+  NSLog(@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa %@ %@ %@", kMGChipID, kMGBoardId, kMGDeviceClass);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
   writeData(0x100339c98, 0x1F2003D5);
   writeData(0x100339c9c, 0x1F2003D5);
   writeData(0x100339ca0, 0x1F2003D5);
@@ -61,27 +191,29 @@ static __attribute__((constructor)) void _logosLocalCtor_2ad1cba6(int __unused a
   writeData(0x100339d78, 0x1F2003D5);
   writeData(0x100339d7c, 0x1F2003D5);
   writeData(0x100339d80, 0x1F2003D5);
+
+  
   writeData(0x100e25ec0, 0x1F2003D5);
   writeData(0x100e25ec4, 0x1F2003D5);
   writeData(0x100e25ec8, 0x1F2003D5);
+
+  
   writeData(0x100e26cac, 0x1F2003D5);
   writeData(0x100e26cb0, 0x1F2003D5);
   writeData(0x100e26cb4, 0x1F2003D5);
+
+  
   writeData(0x1003d1cbc, 0x1F2003D5);
+
+  
   writeData(0x1003d1d28, 0x1F2003D5);
 
   
-  
-  
-
-  
-  
-  
-  
-
   writeData(0x100531d9c, 0x1F2003D5);
   writeData(0x100531da0, 0x1F2003D5);
   writeData(0x100531db4, 0x1F2003D5);
+
+  
   writeData(0x100531df0, 0x1F2003D5);
   writeData(0x100531df4, 0x1F2003D5);
   writeData(0x100531df8, 0x1F2003D5);
@@ -91,6 +223,7 @@ static __attribute__((constructor)) void _logosLocalCtor_2ad1cba6(int __unused a
   writeData(0x100531e08, 0x1F2003D5);
   writeData(0x100531e0c, 0x1F2003D5);
 
+  
   writeData(0x100532094, 0x1F2003D5);
   writeData(0x100532098, 0x1F2003D5);
   writeData(0x10053209c, 0x1F2003D5);

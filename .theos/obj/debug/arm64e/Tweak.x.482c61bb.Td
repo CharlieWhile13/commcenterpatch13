@@ -6,7 +6,8 @@
   /Users/charliewhile/theos/vendor/include/HBLog.h \
   /Users/charliewhile/theos/vendor/include/CoreFoundation/CFLogUtilities.h \
   /Users/charliewhile/Desktop/commcenterpatch13/writeData.h \
-  /Users/charliewhile/theos/vendor/include/substrate.h
+  /Users/charliewhile/theos/vendor/include/substrate.h \
+  /Users/charliewhile/Desktop/commcenterpatch13/mobileGesalt.h
 
 /Users/charliewhile/theos/Prefix.pch:
 
@@ -21,3 +22,5 @@
 /Users/charliewhile/Desktop/commcenterpatch13/writeData.h:
 
 /Users/charliewhile/theos/vendor/include/substrate.h:
+
+/Users/charliewhile/Desktop/commcenterpatch13/mobileGesalt.h:
