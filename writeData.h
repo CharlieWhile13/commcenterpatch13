@@ -18,6 +18,7 @@
 #include <mach-o/dyld.h>
 #include <mach/mach.h>
 #include <dlfcn.h>
+#include <ptrauth.h>
 
 typedef void (*mshookmemory_ptr_t)(void *target, const void *data, size_t size);
 
@@ -84,7 +85,7 @@ uintptr_t calculateAddress(uintptr_t offset)
     }
 }
 /*
-This function calculates the size of the data passed as an argument. 
+This function calculates the size of the data passed as an argument.
 It returns 1 if 4 bytes and 0 if 2 bytes
 Parameters: data to be written
 Return: True = 4 bytes/higher or False = 2 bytes
@@ -101,10 +102,15 @@ bool getType(unsigned int data)
 
 /*
 writeData(offset, data) writes the bytes of data to offset
-this version is crafted to take use of MSHookMemory as 
+this version is crafted to take use of MSHookMemory as
 mach_vm functions are causing problems with codesigning on iOS 12.
 Hopefully this workaround is just temporary.
 */
+
+void *newlyMadePtr;
+void *real_ptr;
+void *real_ptr_source;
+void *MSHookMemoryPTR;
 
 bool writeData(uintptr_t offset, unsigned int data)
 {
@@ -113,10 +119,18 @@ bool writeData(uintptr_t offset, unsigned int data)
     // MSHookMemory is supported, use that instead of vm_write
     if (MSHookMemory_)
     {
+
         if (getType(data))
         {
             data = CFSwapInt32(data);
-            MSHookMemory_((void *)(offset + get_slide()), &data, 4);
+            newlyMadePtr = ((void *)(offset + get_slide()));
+            real_ptr = ptrauth_strip((void *)newlyMadePtr, ptrauth_key_function_pointer);
+            real_ptr_source = ptrauth_strip(&data, ptrauth_key_function_pointer);
+            MSHookMemoryPTR = ptrauth_strip(&MSHookMemory_, ptrauth_key_function_pointer);
+            NSLog(@"Hmm realPTR %p %p, data %p %p MSHookMemory %p %p", (void *)newlyMadePtr, (void *)real_ptr, (void *)&data, real_ptr_source, (void *)&MSHookMemory_, (void *)MSHookMemoryPTR);
+            NSLog(@"Hmm made it this far");
+            MSHookMemory_(real_ptr, real_ptr_source, 4);
+            NSLog(@"testtesttesttest Succesfully fiddled the address :>");
         }
         else
         {
@@ -125,44 +139,11 @@ bool writeData(uintptr_t offset, unsigned int data)
         }
         return true;
     }
-    else
-    {
-        kern_return_t err;
-        mach_port_t port = mach_task_self();
-        vm_address_t address = calculateAddress(offset);
+  return true;
+}
 
-        //set memory protections to allow us writing code there
+static void writeDataWithPAC(void *givenOffset) {
+  NSLog(@"testtesttesttest3");
+  writeData((uintptr_t)givenOffset, 0x1F2003D5);
 
-        err = vm_protect(port, (vm_address_t)address, sizeof(data), false, VM_PROT_READ | VM_PROT_WRITE | VM_PROT_COPY);
-
-        //check if the protection fails
-
-        if (err != KERN_SUCCESS)
-        {
-            return false;
-        }
-
-        //write code to memory
-
-        if (getType(data))
-        {
-            data = CFSwapInt32(data);
-            err = vm_write(port, address, (vm_address_t)&data, sizeof(data));
-        }
-        else
-        {
-            data = (unsigned short)data;
-            data = CFSwapInt16(data);
-            err = vm_write(port, address, (vm_address_t)&data, sizeof(data));
-        }
-        if (err != KERN_SUCCESS)
-        {
-            return FALSE;
-        }
-        //set the protections back to normal so the app can access this address as usual
-
-        err = vm_protect(port, (vm_address_t)address, sizeof(data), false, VM_PROT_READ | VM_PROT_EXECUTE);
-
-        return TRUE;
-    }
 }

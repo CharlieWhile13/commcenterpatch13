@@ -3,7 +3,7 @@ Architecture: iphoneos-arm
 Pre-Depends: firmware (>= 13.0)
 Name: CommCenterPatch13
 Depends: mobilesubstrate
-Version: 1.1
+Version: 1.2
 Description: Change those bundles
 Maintainer: Charlie While
 Author: Charlie While

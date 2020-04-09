@@ -2,5 +2,5 @@
 echo Rebooting CommCenter...
 killall CommCenter
 killall CommCenter Helper
-sleep 30s
+sleep 5s
 exit 0
