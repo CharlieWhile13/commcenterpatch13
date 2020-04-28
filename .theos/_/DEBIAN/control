@@ -1,11 +1,11 @@
 Package: com.charliewhile13.ccpatch13
 Architecture: iphoneos-arm
-Pre-Depends: firmware (>= 13.0)
+Pre-Depends: firmware (>= 8.0)
 Name: CommCenterPatch13
 Depends: mobilesubstrate
-Description: Change those bundles
+Description: Hippity Hoppity make CommCenter your property
 Maintainer: Charlie While
 Author: Charlie While
 Section: Tweaks
-Version: 1.3.2
+Version: 2.0
 Installed-Size: 104

@@ -1,6 +1,5 @@
 #!/bin/sh
-echo Rebooting CommCenter...
+echo Hippity Hoppity CommCenter is now your property
 killall CommCenter
 killall CommCenter Helper
-sleep 30s
 exit 0

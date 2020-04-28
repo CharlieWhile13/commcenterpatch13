@@ -1,3 +1,3 @@
 # commcenterpatch13
 
-My method isn't the cleanest method, but it works, so don't judge :P
+new method, super simple, properly super stable. Probably iOS 8 - 13, no idea

@@ -6,9 +6,10 @@ GO_EASY_ON_ME=1
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = CommCenterPatch13
+TWEAK_NAME = CCPatch13
 
-CommCenterPatch13_FILES = Tweak.x
-CommCenterPatch13_CFLAGS = -fobjc-arc
+CCPatch13_FILES = Tweak.x
+CCPatch13_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
+include $(THEOS_MAKE_PATH)/aggregate.mk
