@@ -1,3 +1,8 @@
+//A new method from iOS 14
+%hookf(int, "__Z50VerifyCarrierBundleVersionsXMLSignatureWithKeyTypePK14__CFDictionary16CBVersionsFormat15CBSignatureType16SignatureKeyType") {
+    return 1;
+}
+
 //iOS 13
 %hookf(int, "_SecKeyRawVerify") {
     return 1;
