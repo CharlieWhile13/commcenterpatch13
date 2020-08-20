@@ -1,4 +1,0 @@
-#!/bin/sh
-echo Rebooting CommCenter...
-echo nope
-exit 0
